@@ -1,0 +1,45 @@
+{
+  "departments": [
+    { "id": "intake", "name": "ช่องทางรับเอกสาร", "state": "READY", "x": 7, "y": 18 },
+    { "id": "invoice", "name": "ออกใบแจ้งหนี้", "state": "READY", "x": 18, "y": 19 },
+    { "id": "receive_docs", "name": "รับเอกสาร", "state": "READY", "x": 28, "y": 19 },
+    { "id": "verify_docs", "name": "ตรวจเอกสาร", "state": "READY", "x": 38, "y": 19 },
+    { "id": "bookkeeping", "name": "บันทึกบัญชี", "state": "READY", "x": 48, "y": 19 },
+    { "id": "tax_report", "name": "จัดทำรายงานภาษี", "state": "READY", "x": 58, "y": 19 },
+    { "id": "reconcile", "name": "กระทบยอด", "state": "READY", "x": 68, "y": 19 },
+    { "id": "auditor_docs", "name": "ผู้สอบบัญชี", "state": "READY", "x": 78, "y": 19 },
+    { "id": "tax_filing", "name": "ยื่นภาษี", "state": "READY", "x": 88, "y": 19 },
+    { "id": "consulting", "name": "รับลูกค้าใหม่", "state": "READY", "x": 23, "y": 46 },
+    { "id": "control_tower", "name": "Dework Control Tower", "state": "MONITORING", "x": 50, "y": 47 },
+    { "id": "year_end_close", "name": "ปิดบัญชีประจำปี", "state": "READY", "x": 13, "y": 70 },
+    { "id": "audit_submit", "name": "ส่งผู้สอบบัญชี", "state": "READY", "x": 31, "y": 70 },
+    { "id": "tax_calculation", "name": "คำนวณภาษี", "state": "READY", "x": 58, "y": 70 },
+    { "id": "dbd_submit", "name": "อนุมัติและยื่น DBD", "state": "READY", "x": 72, "y": 70 },
+    { "id": "archive", "name": "เก็บใบรับและปิดงาน", "state": "READY", "x": 88, "y": 70 }
+  ],
+  "workflow": {
+    "monthly": ["invoice", "receive_docs", "verify_docs", "bookkeeping", "tax_report", "reconcile", "auditor_docs", "tax_filing"],
+    "annual": ["year_end_close", "audit_submit", "tax_calculation", "dbd_submit", "archive"]
+  },
+  "kpis": [
+    { "department_id": "control_tower", "metric_code": "dashboard_structure_ready", "unit": "system", "value": 1, "events": 1 },
+    { "department_id": "sheet", "metric_code": "source_freshness_unknown", "unit": "state", "value": 1, "events": 1 }
+  ],
+  "events": [
+    {
+      "event_id": "seed-dashboard-structure-ready",
+      "business_date": "2026-09-18",
+      "department_id": "control_tower",
+      "metric_code": "dashboard_structure_ready",
+      "value": 1,
+      "unit": "system",
+      "title": "Dashboard shell is ready; waiting for accepted KPI events.",
+      "receipt_status": "ACCEPTED",
+      "source": "seed"
+    }
+  ],
+  "light_lines": [
+    { "event_id": "seed-monthly-flow", "kind": "handoff", "from": "receive_docs", "to": "verify_docs", "title": "Monthly workflow route", "status": "demo" },
+    { "event_id": "seed-control-tower", "kind": "cc", "from": "control_tower", "to": "tax_filing", "title": "Control Tower watches deadline lane", "status": "demo" }
+  ]
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dework Virtual Office Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Dework Accounting</p>
+          <h1>Virtual Office Control Tower</h1>
+        </div>
+        <div class="status-pill" id="freshness">Loading...</div>
+      </header>
+
+      <section class="metrics" id="metrics"></section>
+
+      <section class="office-wrap" aria-label="Dework 3D Virtual Office Dashboard">
+        <img class="office-image" src="/assets/dework-virtual-office.png" alt="Dework 3D Virtual Office workflow dashboard" />
+        <svg class="line-layer" viewBox="0 0 100 100" preserveAspectRatio="none" id="lineLayer"></svg>
+        <div class="hotspot-layer" id="hotspots"></div>
+      </section>
+
+      <section class="panels">
+        <article class="panel">
+          <h2>System Status</h2>
+          <dl id="systemStatus"></dl>
+        </article>
+        <article class="panel">
+          <h2>Latest Events</h2>
+          <div class="event-list" id="events"></div>
+        </article>
+        <article class="panel">
+          <h2>SOP Guardrails</h2>
+          <ul>
+            <li>งานจริง + หลักฐานจริง + Event ID เดียว</li>
+            <li>ส่งซ้ำไม่เพิ่ม KPI</li>
+            <li>CC/Handoff ทำให้เส้นไฟขึ้น แต่ไม่ใช่งานเสร็จ</li>
+            <li>ข้อมูลขาดคือ UNKNOWN ไม่ใช่ 0</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
