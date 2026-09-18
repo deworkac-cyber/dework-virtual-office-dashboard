@@ -45,9 +45,9 @@
   "robot_routes": [
     { "id": "bot-doc-01", "name": "Document runner 01", "from": "invoice", "to": "receive_docs", "duration": 10, "delay": 0, "accent": "#20d17f" },
     { "id": "bot-doc-02", "name": "Verification runner 02", "from": "receive_docs", "to": "verify_docs", "duration": 11, "delay": -2, "accent": "#72f2ff" },
-    { "id": "bot-doc-03", "name": "Bookkeeping runner 03", "from": "verify_docs", "to": "bookkeeping", "duration": 12, "delay": -4, "accent": "#ffd866" },
+    { "id": "bot-doc-03", "name": "Bookkeeping runner 03", "from": "verify_docs", "to": "bookkeeping", "duration": 12, "delay": -4, "accent": "#9ee6b8" },
     { "id": "bot-tax-04", "name": "Tax report runner 04", "from": "tax_report", "to": "reconcile", "duration": 13, "delay": -1, "accent": "#9ee6b8" },
-    { "id": "bot-cc-05", "name": "Control tower runner 05", "from": "consulting", "to": "control_tower", "duration": 14, "delay": -5, "accent": "#d6a938" },
+    { "id": "bot-cc-05", "name": "Control tower runner 05", "from": "consulting", "to": "control_tower", "duration": 14, "delay": -5, "accent": "#20d17f" },
     { "id": "bot-close-06", "name": "Annual closing runner 06", "from": "tax_calculation", "to": "dbd_submit", "duration": 12, "delay": -7, "accent": "#7bd7ff" }
   ]
 }
