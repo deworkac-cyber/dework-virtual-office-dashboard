@@ -35,10 +35,12 @@ function renderHotspots(departments, kpis) {
       const kpi = kpiMap.get(department.id);
       nodes.set(department.id, department);
       return `
-        <button class="hotspot ${department.state.toLowerCase()}" style="left:${department.x}%;top:${department.y}%">
-          <b>${department.name}</b>
-          <span>${kpi ? `${kpi.value} ${kpi.unit}` : department.state}</span>
-        </button>
+        <button
+          class="hotspot ${department.state.toLowerCase()}"
+          style="left:${department.x}%;top:${department.y}%"
+          aria-label="${department.name}: ${kpi ? `${kpi.value} ${kpi.unit}` : department.state}"
+          title="${department.name}"
+        ></button>
       `;
     })
     .join("");
