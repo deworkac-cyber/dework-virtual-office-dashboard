@@ -192,6 +192,7 @@ async function buildStatus() {
       kpis: aggregated,
       events,
       light_lines: seed.light_lines,
+      robot_routes: seed.robot_routes || [],
       notes: events.length
         ? []
         : ["Sheet connected but no recognizable KPI event rows were found."]
@@ -215,6 +216,7 @@ async function buildStatus() {
       kpis: seed.kpis,
       events: seed.events,
       light_lines: seed.light_lines,
+      robot_routes: seed.robot_routes || [],
       notes: [
         "Google Sheet could not be read from the server. Showing seed structure, not business totals.",
         "Missing data is UNKNOWN, not zero."

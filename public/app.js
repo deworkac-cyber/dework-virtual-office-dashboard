@@ -61,6 +61,42 @@ function renderLines(lines) {
   }
 }
 
+function renderRobots(routes) {
+  const root = document.getElementById("robots");
+  root.innerHTML = routes
+    .map((route, index) => {
+      const from = nodes.get(route.from);
+      const to = nodes.get(route.to);
+      if (!from || !to) return "";
+      const duration = route.duration || 12;
+      const delay = route.delay || index * -1.4;
+      return `
+        <div
+          class="delivery-robot bot-${index + 1}"
+          style="--from-x:${from.x}%;--from-y:${from.y}%;--to-x:${to.x}%;--to-y:${to.y}%;--duration:${duration}s;--delay:${delay}s;--accent:${route.accent || "#20d17f"}"
+          aria-label="${route.name || `Delivery robot ${index + 1}`}: ${from.name} to ${to.name}"
+          title="${route.name || `Delivery robot ${index + 1}`}"
+        >
+          <span class="bot-shadow"></span>
+          <span class="bot-head">
+            <span class="bot-eye left"></span>
+            <span class="bot-eye right"></span>
+            <span class="bot-smile"></span>
+          </span>
+          <span class="bot-body">
+            <span class="bot-core"></span>
+            <span class="bot-arm left"></span>
+            <span class="bot-arm right"></span>
+            <span class="bot-parcel"></span>
+          </span>
+          <span class="bot-foot left"></span>
+          <span class="bot-foot right"></span>
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function renderStatus(data) {
   const sheet = data.sheet || {};
   setText("freshness", `${data.source_freshness} · ${data.generated_at_bkk}`);
@@ -94,6 +130,7 @@ async function main() {
     renderMetrics(data.kpis || []);
     renderHotspots(data.departments || [], data.kpis || []);
     renderLines(data.light_lines || []);
+    renderRobots(data.robot_routes || []);
     renderStatus(data);
     renderEvents(data.events || []);
   } catch (error) {
